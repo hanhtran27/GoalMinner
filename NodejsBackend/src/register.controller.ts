@@ -40,11 +40,14 @@ registerRoutes.post('/register', async function(req:express.Request, res:express
             password: req.body.password,
         })
         insert.save();
-	res.json({firstName: req.body.firstName,
-            	lastName: req.body.lastName,
+        let token:String = req.body.userName + req.body.password;
+        res.json({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
            	email: req.body.email,
-            	userName: req.body.userName,
-            	password: req.body.password,
+            userName: req.body.userName,
+            password: req.body.password,
+            token: token,
         });
     };
     res.end();

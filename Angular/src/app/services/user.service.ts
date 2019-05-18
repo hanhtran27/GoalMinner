@@ -23,7 +23,7 @@ export class UserService {
     return this.http.post(this.loginUrl, login, httpOptions);
   }
 
-  checkregister(user:User):Observable<User> {
-    return this.http.post<User>(this.registerUrl, user, httpOptions);
+  checkregister(user:User):Observable<any> {
+    return this.http.post<any>(this.registerUrl, user, httpOptions);
   }
 }

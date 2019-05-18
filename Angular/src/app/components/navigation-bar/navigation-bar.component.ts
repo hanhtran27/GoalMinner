@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -7,9 +8,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationBarComponent implements OnInit {
 
-  constructor() { }
+  loginout:string;
+
+  constructor(private router: Router) {}
 
   ngOnInit() {
+    this.initLoginText();
+  }
+  home() {
+    console.info("home clicked!");
+    this.router.navigate(['/']);
+  } 
+  
+  goals() {
+    console.info("goals clicked!");
+    this.router.navigate(['/']);
   }
 
+  about() {
+    console.info("abt clciked!");
+    this.router.navigate(['/about']);
+  }
+
+  login() {
+    console.info("logined clicked!");
+    localStorage.removeItem("token");
+    this.loginout = "Login";
+    this.router.navigate(['/login']);
+  }
+
+  private initLoginText():void {
+    if (localStorage.getItem("token")) {
+      this.loginout = "Logout";
+    } else {
+      this.loginout = "Login"
+    }
+  }
 }
