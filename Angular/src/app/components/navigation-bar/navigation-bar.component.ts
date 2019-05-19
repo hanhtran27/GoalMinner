@@ -33,7 +33,7 @@ export class NavigationBarComponent implements OnInit {
 
   login() {
     console.info("logined clicked!");
-    localStorage.removeItem("token");
+    this.authService.clearAuthenticationToken();
     this.loginout = "Login";
     this.router.navigate(['/login']);
   }
