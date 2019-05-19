@@ -16,13 +16,14 @@ export class RegisterComponent implements OnInit {
   username:string;
   email:string;
   password:string;
+  invisible:string;
 
   constructor(private userService:UserService,
               private router:Router,
               private authService: AuthService) { }
 
   ngOnInit() {
-
+    this.invisible = "invisible";
   }
 
   register() {
@@ -38,6 +39,8 @@ export class RegisterComponent implements OnInit {
           if (res.token) {
             this.authService.setAuthenticationToken(res.token);
             this.router.navigate(['/']);
+          } else {
+            this.invisible = "visible";
           }
     })
   }

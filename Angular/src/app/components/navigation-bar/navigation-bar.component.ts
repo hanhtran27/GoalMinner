@@ -27,7 +27,7 @@ export class NavigationBarComponent implements OnInit {
   }
 
   about() {
-    console.info("abt clciked!");
+    console.info("abt clicked!");
     this.router.navigate(['/about']);
   }
 

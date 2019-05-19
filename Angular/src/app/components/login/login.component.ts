@@ -11,17 +11,17 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
   username:string;
   password:string;
+  invisible:string;
 
   constructor(private userService:UserService,
               private router: Router,
               private authService: AuthService) { }
 
   ngOnInit() {
+    this.invisible = "invisible";
   }
 
   login() {
-    let rounter = this.router;
-    console.info("clicked!");
     this.userService
         .checklogin(this.username, this.password)
         .subscribe((res:any) => {
@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/']);
           } else {
             console.info("Failed!");
+            this.invisible = "visible";
           }
         });
   }
