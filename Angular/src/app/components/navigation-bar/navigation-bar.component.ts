@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -10,7 +11,7 @@ export class NavigationBarComponent implements OnInit {
 
   loginout:string;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
     this.initLoginText();
@@ -38,7 +39,7 @@ export class NavigationBarComponent implements OnInit {
   }
 
   private initLoginText():void {
-    if (localStorage.getItem("token")) {
+    if (this.authService.isLoggedIn()) {
       this.loginout = "Logout";
     } else {
       this.loginout = "Login"
